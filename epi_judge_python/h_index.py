@@ -11,7 +11,7 @@ def h_index(citations: List[int]) -> int:
         if citations[x] >= len(citations) - x:
             return len(citations) - x
     return 0
-    """
+    """ 
     citations.sort()
     n = len(citations) # assigning a variable for constant time!!!
     for index, value in enumerate(citations):
