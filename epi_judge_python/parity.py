@@ -1,6 +1,5 @@
 from test_framework import generic_test
 
-
 def parity(x: int) -> int:
     b = bin(x)
     sub = "1"
