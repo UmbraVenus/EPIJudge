@@ -7,10 +7,39 @@ from test_framework.test_utils import enable_executor_hook
 
 RED, WHITE, BLUE = range(3)
 
-
 def dutch_flag_partition(pivot_index: int, A: List[int]) -> None:
-    # TODO - you fill in here.
-    return
+    # My own implementation of one pass failed
+    # Implement book's 2 passes method first, then keep cracking my own
+    # 1 pass(my original thought)[9ms]:
+    # The book says only one pass have better time efficiency
+    # But I ran tests and 2 passes are better? Maybe space complexity?
+    """
+    pivot = A[pivot_index]
+    little, middle, riddle = 0, 0, len(A)  # riddle means back
+    while middle < riddle:
+        if A[middle] < pivot:
+            A[middle], A[little] = A[little], A[middle]
+            little += 1
+            middle += 1
+        elif A[middle] == pivot:
+            middle += 1
+        else:
+            riddle -= 1
+            A[middle], A[riddle] = A[riddle], A[middle]
+    """
+    # 2 passes: [8ms]
+    pivot = A[pivot_index]
+    little = 0
+    for x in range(len(A)):
+        if A[x] < pivot:
+            A[little], A[x] = A[x], A[little]
+            little += 1
+    big = len(A) - 1
+    for x in reversed(range(len(A))):
+        if A[x] > pivot:
+            A[big], A[x] = A[x], A[big]
+            big -= 1
+
 
 
 @enable_executor_hook
