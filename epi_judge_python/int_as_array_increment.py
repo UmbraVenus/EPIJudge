@@ -4,8 +4,8 @@ from test_framework import generic_test
 
 
 def plus_one(A: List[int]) -> List[int]:
-    # TODO - you fill in here.
-    return []
+    last_digit = len(A) - 1
+    
 
 
 if __name__ == '__main__':
